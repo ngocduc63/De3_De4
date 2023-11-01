@@ -1,0 +1,7 @@
+D:\SocketC#\OnTapServer\bin\Debug\OnTapServer.exe.config
+D:\SocketC#\OnTapServer\bin\Debug\OnTapServer.exe
+D:\SocketC#\OnTapServer\bin\Debug\OnTapServer.pdb
+D:\SocketC#\OnTapServer\obj\Debug\OnTapServer.csproj.AssemblyReference.cache
+D:\SocketC#\OnTapServer\obj\Debug\OnTapServer.csproj.CoreCompileInputs.cache
+D:\SocketC#\OnTapServer\obj\Debug\OnTapServer.exe
+D:\SocketC#\OnTapServer\obj\Debug\OnTapServer.pdb

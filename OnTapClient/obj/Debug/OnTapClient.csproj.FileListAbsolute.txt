@@ -1,0 +1,7 @@
+D:\SocketC#\OnTapClient\bin\Debug\OnTapClient.exe.config
+D:\SocketC#\OnTapClient\bin\Debug\OnTapClient.exe
+D:\SocketC#\OnTapClient\bin\Debug\OnTapClient.pdb
+D:\SocketC#\OnTapClient\obj\Debug\OnTapClient.csproj.AssemblyReference.cache
+D:\SocketC#\OnTapClient\obj\Debug\OnTapClient.csproj.CoreCompileInputs.cache
+D:\SocketC#\OnTapClient\obj\Debug\OnTapClient.exe
+D:\SocketC#\OnTapClient\obj\Debug\OnTapClient.pdb
