@@ -29,7 +29,7 @@ namespace OnTapServer
             {
                 return "Phuong trinh co vo so nghiem";
             }
-            else if (a != 0 && b == 0)
+            else if (a == 0 && b != 0)
             {
                 return "Phuong trinh vo nghiem";
 
