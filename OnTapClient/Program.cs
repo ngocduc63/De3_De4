@@ -31,30 +31,66 @@ namespace OnTapClient
             //Console.WriteLine("<Server>: " + message);
             #endregion
 
+            #region De4
+            //IPEndPoint ipe_sv = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8888);
+            //Socket client = new Socket(SocketType.Stream, ProtocolType.Tcp);
+            //client.Connect(ipe_sv);
+            //Console.WriteLine("Ket noi thanh cong");
+
+            //int a, b;
+            //do
+            //{
+            //    try
+            //    {
+            //        Console.WriteLine("Nhap a: ");
+            //        a = Convert.ToInt32(Console.ReadLine());
+
+            //        Console.WriteLine("Nhap b: ");
+            //        b = Convert.ToInt32(Console.ReadLine());
+            //        if (a <= 0 || b <= 0)
+            //        {
+            //            Console.WriteLine("Nhap so nguyen duong");
+            //        }
+            //        else break;
+            //    }
+            //    catch (Exception)
+            //    {
+            //        Console.WriteLine("Nhap so nguyen duong");
+            //    }
+            //} while (true);
+
+            //string mess = $"{a}-{b}";
+            //byte[] send = ASCIIEncoding.ASCII.GetBytes(mess);
+            //client.SendTo(send, ipe_sv);
+
+            //byte[] receive = new byte[1024];
+            //var len = client.Receive(receive, SocketFlags.None);
+            //string bmess = ASCIIEncoding.ASCII.GetString(receive, 0, len);
+            //Console.WriteLine($"<Server>: {bmess}");
+            #endregion
+
+            //De2
             IPEndPoint ipe_sv = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8888);
             Socket client = new Socket(SocketType.Stream, ProtocolType.Tcp);
             client.Connect(ipe_sv);
             Console.WriteLine("Ket noi thanh cong");
 
-            int a, b;
+            double a, b;
             do
             {
                 try
                 {
                     Console.WriteLine("Nhap a: ");
-                    a = Convert.ToInt32(Console.ReadLine());
+                    a = Convert.ToDouble(Console.ReadLine());
 
                     Console.WriteLine("Nhap b: ");
-                    b = Convert.ToInt32(Console.ReadLine());
-                    if (a <= 0 || b <= 0)
-                    {
-                        Console.WriteLine("Nhap so nguyen duong");
-                    }
-                    else break;
+                    b = Convert.ToDouble(Console.ReadLine());
+
+                    break;
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Nhap so nguyen duong");
+                    Console.WriteLine("Nhap dinh dang so");
                 }
             } while (true);
 

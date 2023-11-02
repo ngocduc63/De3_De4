@@ -23,6 +23,22 @@ namespace OnTapServer
             return USCLN(b, a % b);
         }
 
+        static string GiaiPhuongTrinhBacNhat(double a, double b)
+        {
+            if (a == 0 && b == 0)
+            {
+                return "Phuong trinh co vo so nghiem";
+            }
+            else if (a != 0 && b == 0)
+            {
+                return "Phuong trinh vo nghiem";
+
+            }
+            else
+            {
+                return $"Phuong trinh co nghiem la: x = {-b / a}";
+            }
+        }
         static void Main(string[] args)
         {
             #region De3
@@ -62,6 +78,43 @@ namespace OnTapServer
             //}
             #endregion
 
+            #region De4
+            //IPEndPoint ipe = new IPEndPoint(IPAddress.Any, 8888);
+            //Socket sever = new Socket(SocketType.Stream, ProtocolType.Tcp);
+            //Console.WriteLine("Cho ket noi");
+            //sever.Bind(ipe);
+            //sever.Listen(10);
+
+            //do
+            //{
+            //    Socket client = sever.Accept();
+            //    Console.WriteLine("Co ket noi");
+
+            //    byte[] receive = new byte[1024];
+            //    var len = client.Receive(receive, SocketFlags.None);
+            //    string mess = ASCIIEncoding.ASCII.GetString(receive, 0, len);
+            //    Console.WriteLine($"<Client>: {mess}");
+
+            //    int a = Convert.ToInt32(mess.Split('-')[0]);
+            //    int b = Convert.ToInt32(mess.Split('-')[1]);
+
+            //    string bmess = "";
+            //    if (a <= 0 || b <= 0)
+            //    {
+            //        bmess = "Nhap khong dung so nguyen duong";
+            //    }
+            //    else
+            //    {
+            //        bmess = $"UCLN cua {a} va {b} la {USCLN(a, b)}";
+            //    }
+
+            //    byte[] send = ASCIIEncoding.ASCII.GetBytes(bmess);
+            //    client.SendTo(send, ipe);
+
+            //} while (true);
+            #endregion
+
+            // De2
             IPEndPoint ipe = new IPEndPoint(IPAddress.Any, 8888);
             Socket sever = new Socket(SocketType.Stream, ProtocolType.Tcp);
             Console.WriteLine("Cho ket noi");
@@ -78,18 +131,10 @@ namespace OnTapServer
                 string mess = ASCIIEncoding.ASCII.GetString(receive, 0, len);
                 Console.WriteLine($"<Client>: {mess}");
 
-                int a = Convert.ToInt32( mess.Split('-')[0]);
-                int b = Convert.ToInt32( mess.Split('-')[1]);
+                double a = Convert.ToDouble(mess.Split('-')[0]);
+                double b = Convert.ToDouble(mess.Split('-')[1]);
 
-                string bmess = "";
-                if(a <= 0 || b <= 0)
-                {
-                    bmess = "Nhap khong dung so nguyen duong";
-                }else
-                {
-                    bmess = $"UCLN cua {a} va {b} la {USCLN(a, b)}";
-                }
-
+                string bmess = GiaiPhuongTrinhBacNhat(a, b);
                 byte[] send = ASCIIEncoding.ASCII.GetBytes(bmess);
                 client.SendTo(send, ipe);
 
