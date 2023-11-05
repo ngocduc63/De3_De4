@@ -13,22 +13,22 @@ namespace OnTapClient
         static void Main(string[] args)
         {
             #region De3
-            //IPEndPoint ipe_sv = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8888);
-            //Socket client = new Socket(SocketType.Dgram, ProtocolType.Udp);
+            IPEndPoint ipe_sv = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8888);
+            Socket client = new Socket(SocketType.Dgram, ProtocolType.Udp);
 
-            //client.Connect(ipe_sv);
-            //Console.WriteLine("Ket noi thanh cong");
+            client.Connect(ipe_sv);
+            Console.WriteLine("Ket noi thanh cong");
 
-            //Console.WriteLine("Nhap ki tu");
-            //string send = Console.ReadLine();
-            //byte[] bSend = ASCIIEncoding.ASCII.GetBytes(send);
-            //client.SendTo(bSend, ipe_sv);
+            Console.WriteLine("Nhap ki tu");
+            string send = Console.ReadLine();
+            byte[] bSend = ASCIIEncoding.ASCII.GetBytes(send);
+            client.SendTo(bSend, ipe_sv);
 
-            //EndPoint fakeEndPoint = new IPEndPoint(IPAddress.Any, 0);
-            //byte[] bReceive = new byte[1024];
-            //int len = client.ReceiveFrom(bReceive, ref fakeEndPoint);
-            //string message = ASCIIEncoding.ASCII.GetString(bReceive, 0, len);
-            //Console.WriteLine("<Server>: " + message);
+            EndPoint fakeEndPoint = new IPEndPoint(IPAddress.Any, 0);
+            byte[] bReceive = new byte[1024];
+            int len = client.ReceiveFrom(bReceive, ref fakeEndPoint);
+            string message = ASCIIEncoding.ASCII.GetString(bReceive, 0, len);
+            Console.WriteLine("<Server>: " + message);
             #endregion
 
             #region De4
@@ -70,38 +70,38 @@ namespace OnTapClient
             #endregion
 
             //De2
-            IPEndPoint ipe_sv = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8888);
-            Socket client = new Socket(SocketType.Stream, ProtocolType.Tcp);
-            client.Connect(ipe_sv);
-            Console.WriteLine("Ket noi thanh cong");
+            //IPEndPoint ipe_sv = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8888);
+            //Socket client = new Socket(SocketType.Stream, ProtocolType.Tcp);
+            //client.Connect(ipe_sv);
+            //Console.WriteLine("Ket noi thanh cong");
 
-            double a, b;
-            do
-            {
-                try
-                {
-                    Console.WriteLine("Nhap a: ");
-                    a = Convert.ToDouble(Console.ReadLine());
+            //double a, b;
+            //do
+            //{
+            //    try
+            //    {
+            //        Console.WriteLine("Nhap a: ");
+            //        a = Convert.ToDouble(Console.ReadLine());
 
-                    Console.WriteLine("Nhap b: ");
-                    b = Convert.ToDouble(Console.ReadLine());
+            //        Console.WriteLine("Nhap b: ");
+            //        b = Convert.ToDouble(Console.ReadLine());
 
-                    break;
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Nhap dinh dang so");
-                }
-            } while (true);
+            //        break;
+            //    }
+            //    catch (Exception)
+            //    {
+            //        Console.WriteLine("Nhap dinh dang so");
+            //    }
+            //} while (true);
 
-            string mess = $"{a}-{b}";
-            byte[] send = ASCIIEncoding.ASCII.GetBytes(mess);
-            client.SendTo(send, ipe_sv);
+            //string mess = $"{a}-{b}";
+            //byte[] send = ASCIIEncoding.ASCII.GetBytes(mess);
+            //client.SendTo(send, ipe_sv);
 
-            byte[] receive = new byte[1024];
-            var len = client.Receive(receive, SocketFlags.None);
-            string bmess = ASCIIEncoding.ASCII.GetString(receive, 0, len);
-            Console.WriteLine($"<Server>: {bmess}");
+            //byte[] receive = new byte[1024];
+            //var len = client.Receive(receive, SocketFlags.None);
+            //string bmess = ASCIIEncoding.ASCII.GetString(receive, 0, len);
+            //Console.WriteLine($"<Server>: {bmess}");
 
             Console.ReadLine();
         }

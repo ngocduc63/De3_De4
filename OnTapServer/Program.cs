@@ -13,8 +13,14 @@ namespace OnTapServer
         // de 3:
         static bool checkKeyWord(string key)
         {
-            char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
-            return Array.IndexOf(vowels, key) >= 0;
+           char lowerC = char.ToLower(key[0]);
+
+            if (lowerC == 'a' || lowerC == 'e' || lowerC == 'i' || lowerC == 'o' || lowerC == 'u')
+            {
+                return true;
+            }
+
+            return false;
         }
         // de 4:
         static int USCLN(int a, int b)
@@ -42,40 +48,40 @@ namespace OnTapServer
         static void Main(string[] args)
         {
             #region De3
-            //try
-            //{
-            //    IPEndPoint ipe = new IPEndPoint(IPAddress.Any, 8888);
-            //    Socket server = new Socket(SocketType.Dgram, ProtocolType.Udp);
-            //    server.Bind(ipe);
-            //    Console.WriteLine("Cho ket noi..");
+            try
+            {
+                IPEndPoint ipe = new IPEndPoint(IPAddress.Any, 8888);
+                Socket server = new Socket(SocketType.Dgram, ProtocolType.Udp);
+                server.Bind(ipe);
+                Console.WriteLine("Cho ket noi..");
 
-            //    do
-            //    {
-            //        EndPoint endPoint = new IPEndPoint(IPAddress.Any, 0);
-            //        byte[] bReceive = new byte[1024];
-            //        int len = server.ReceiveFrom(bReceive, ref endPoint);
-            //        string message = ASCIIEncoding.ASCII.GetString(bReceive, 0, len);
-            //        Console.WriteLine("<Client>: " + message);
+                do
+                {
+                    EndPoint endPoint = new IPEndPoint(IPAddress.Any, 0);
+                    byte[] bReceive = new byte[1024];
+                    int len = server.ReceiveFrom(bReceive, ref endPoint);
+                    string message = ASCIIEncoding.ASCII.GetString(bReceive, 0, len);
+                    Console.WriteLine("<Client>: " + message);
 
-            //        string send = "";
-            //        if (message.Trim().Length != 1)
-            //        {
-            //            send = "Gia tri khong dung";
-            //        }
-            //        else
-            //        {
-            //            send = checkKeyWord(message) ? "Nguyen am" : "Phu am";
-            //        }
-            //        byte[] bSend = ASCIIEncoding.ASCII.GetBytes(send);
-            //        server.SendTo(bSend, endPoint);
+                    string send = "";
+                    if (message.Trim().Length != 1)
+                    {
+                        send = "Gia tri khong dung";
+                    }
+                    else
+                    {
+                        send = checkKeyWord(message) ? "Nguyen am" : "Phu am";
+                    }
+                    byte[] bSend = ASCIIEncoding.ASCII.GetBytes(send);
+                    server.SendTo(bSend, endPoint);
 
-            //    } while (true);
-            //}
-            //catch (Exception e)
-            //{
+                } while (true);
+            }
+            catch (Exception e)
+            {
 
-            //    Console.WriteLine(e.ToString());
-            //}
+                Console.WriteLine(e.ToString());
+            }
             #endregion
 
             #region De4
@@ -115,30 +121,30 @@ namespace OnTapServer
             #endregion
 
             // De2
-            IPEndPoint ipe = new IPEndPoint(IPAddress.Any, 8888);
-            Socket sever = new Socket(SocketType.Stream, ProtocolType.Tcp);
-            Console.WriteLine("Cho ket noi");
-            sever.Bind(ipe);
-            sever.Listen(10);
+            //IPEndPoint ipe = new IPEndPoint(IPAddress.Any, 8888);
+            //Socket sever = new Socket(SocketType.Stream, ProtocolType.Tcp);
+            //Console.WriteLine("Cho ket noi");
+            //sever.Bind(ipe);
+            //sever.Listen(10);
 
-            do
-            {
-                Socket client = sever.Accept();
-                Console.WriteLine("Co ket noi");
+            //do
+            //{
+            //    Socket client = sever.Accept();
+            //    Console.WriteLine("Co ket noi");
 
-                byte[] receive = new byte[1024];
-                var len = client.Receive(receive, SocketFlags.None);
-                string mess = ASCIIEncoding.ASCII.GetString(receive, 0, len);
-                Console.WriteLine($"<Client>: {mess}");
+            //    byte[] receive = new byte[1024];
+            //    var len = client.Receive(receive, SocketFlags.None);
+            //    string mess = ASCIIEncoding.ASCII.GetString(receive, 0, len);
+            //    Console.WriteLine($"<Client>: {mess}");
 
-                double a = Convert.ToDouble(mess.Split('-')[0]);
-                double b = Convert.ToDouble(mess.Split('-')[1]);
+            //    double a = Convert.ToDouble(mess.Split('-')[0]);
+            //    double b = Convert.ToDouble(mess.Split('-')[1]);
 
-                string bmess = GiaiPhuongTrinhBacNhat(a, b);
-                byte[] send = ASCIIEncoding.ASCII.GetBytes(bmess);
-                client.SendTo(send, ipe);
+            //    string bmess = GiaiPhuongTrinhBacNhat(a, b);
+            //    byte[] send = ASCIIEncoding.ASCII.GetBytes(bmess);
+            //    client.SendTo(send, ipe);
 
-            } while (true);
+            //} while (true);
 
             Console.ReadLine();
         }
